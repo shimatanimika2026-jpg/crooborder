@@ -40,10 +40,25 @@ vi.mock('@/contexts/AuthContext', async () => {
         updated_at: new Date().toISOString(),
       },
       loading: false,
-      signIn: vi.fn(),
-      signUp: vi.fn(),
+      signInWithUsername: vi.fn(async (username: string, password: string) => {
+        const { supabase } = await import('@/db/supabase');
+        const { error } = await supabase.auth.signInWithPassword({
+          email: `${username}@miaoda.com`,
+          password,
+        });
+        return { error };
+      }),
+      signUpWithUsername: vi.fn(async (username: string, password: string) => {
+        const { supabase } = await import('@/db/supabase');
+        const { error } = await supabase.auth.signUp({
+          email: `${username}@miaoda.com`,
+          password,
+        });
+        return { error };
+      }),
       signOut: vi.fn(),
-      updateProfile: vi.fn(),
+      refreshProfile: vi.fn(),
+      signInAsDemo: vi.fn(),
     }),
   };
 });

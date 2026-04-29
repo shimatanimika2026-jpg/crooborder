@@ -1380,12 +1380,6 @@
   "firmware": {
     "errorLoad": "加载固件版本失败"
   },
-  "asn": {
-    "successUpdateStatus": "状态更新成功",
-    "errorUpdateStatus": "状态更新失败",
-    "warningDuplicateReceiving": "该 ASN 已存在有效收货记录，不能重复创建",
-    "errorNoItems": "该 ASN 没有明细数据，无法创建收货记录"
-  },
   "service": {
     "shipping": {
       "errorCreate": "创建发货订单失败",

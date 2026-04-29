@@ -1357,12 +1357,6 @@
   "firmware": {
     "errorLoad": "ファームウェアバージョンの読み込みに失敗しました"
   },
-  "asn": {
-    "successUpdateStatus": "ステータスが正常に更新されました",
-    "errorUpdateStatus": "ステータスの更新に失敗しました",
-    "warningDuplicateReceiving": "このASNには既に有効な入荷記録が存在するため、重複して作成できません",
-    "errorNoItems": "このASNには明細データがないため、入荷記録を作成できません"
-  },
   "service": {
     "shipping": {
       "errorCreate": "出荷オーダーの作成に失敗しました",
