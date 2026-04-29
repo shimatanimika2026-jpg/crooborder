@@ -1,0 +1,356 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* 2026现代高端设计系统 - 商用级SaaS质感 */
+    /* 灵感来源：Linear、Notion、Figma、Arc浏览器 */
+    --radius: 1rem; /* 16px 大圆角 */
+    
+    /* 背景色：极简灰白渐变 */
+    --background: 220 20% 98%; /* #fafbfc */
+    --foreground: 220 15% 10%; /* #171a1f */
+    
+    /* 卡片：纯白 + 精致投影 */
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 10%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 10%;
+    
+    /* 主色：深蓝渐变（专业、科技、信任）*/
+    --primary: 217 91% 60%; /* #2563eb */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 221 83% 53%; /* #3b82f6 渐变终点 */
+    
+    /* 次要色：紫色渐变（创新、高端）*/
+    --secondary: 262 83% 58%; /* #8b5cf6 */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 258 90% 66%; /* #a78bfa 渐变终点 */
+    
+    /* 强调色：青色（活力、现代）*/
+    --accent: 189 94% 43%; /* #06b6d4 */
+    --accent-foreground: 0 0% 100%;
+    
+    /* 弱化色 */
+    --muted: 220 14% 96%; /* #f1f3f5 */
+    --muted-foreground: 220 9% 46%; /* #6b7280 */
+    
+    /* 危险色：现代红 */
+    --destructive: 0 84% 60%; /* #ef4444 */
+    --destructive-foreground: 0 0% 100%;
+    
+    /* 边框：极细灰 */
+    --border: 220 13% 91%; /* #e5e7eb */
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+    
+    /* 扩展色 - 现代高端版 */
+    --success: 142 76% 36%; /* #10b981 */
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 38 92% 50%; /* #f59e0b */
+    --warning-foreground: 0 0% 100%;
+    
+    --info: 199 89% 48%; /* #0ea5e9 */
+    --info-foreground: 0 0% 100%;
+    
+    /* 图表配色：现代渐变系 */
+    --chart-1: 217 91% 60%; /* 深蓝 */
+    --chart-2: 262 83% 58%; /* 紫色 */
+    --chart-3: 189 94% 43%; /* 青色 */
+    --chart-4: 142 76% 36%; /* 绿色 */
+    --chart-5: 38 92% 50%; /* 橙色 */
+    
+    /* 侧边栏：玻璃态效果 */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 15% 10%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-accent-foreground: 220 15% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217 91% 60%;
+    
+    /* 玻璃态效果 */
+    --glass-bg: 0 0% 100% / 0.7;
+    --glass-border: 220 13% 91% / 0.5;
+    
+    /* 精致投影 */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+    --primary-glow: 221 83% 53%;
+    --secondary: 262 83% 58%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 258 90% 66%;
+    --accent: 189 94% 43%;
+    --accent-foreground: 0 0% 100%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+    --chart-1: 217 91% 60%;
+    --chart-2: 262 83% 58%;
+    --chart-3: 189 94% 43%;
+    --chart-4: 142 76% 36%;
+    --chart-5: 38 92% 50%;
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 217 91% 60%;
+    --glass-bg: 222 47% 11% / 0.7;
+    --glass-border: 217 33% 17% / 0.5;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* 现代字体系统 */
+  h1 {
+    @apply text-foreground;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    letter-spacing: -0.02em;
+  }
+
+  h2, h3 {
+    @apply text-slate-900; /* 深黑 */
+    font-weight: 600; /* 加粗 */
+    letter-spacing: -0.01em;
+  }
+
+  h4, h5, h6 {
+    @apply text-slate-900; /* 加深 */
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  p {
+    @apply text-slate-800; /* 加深正文 */
+  }
+}
+
+@layer utilities {
+  /* 工业风卡片阴影 - 极克制 */
+  .card-shadow {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  .card-shadow-hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  /* 玻璃态效果 */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  /* 渐变文本 */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .gradient-text-secondary {
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-glow)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* 渐变背景 */
+  .gradient-bg-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+  }
+
+  .gradient-bg-secondary {
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-glow)));
+  }
+
+  /* 微光效果 */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0,
+      rgba(255, 255, 255, 0.2) 20%,
+      rgba(255, 255, 255, 0.5) 60%,
+      rgba(255, 255, 255, 0)
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* 悬停提升效果 */
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  /* 按钮波纹效果 */
+  .ripple {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .ripple:active::after {
+    width: 300px;
+    height: 300px;
+  }
+
+  .minimal-border {
+    border: 1px solid hsl(var(--border));
+  }
+}
+
+@layer utilities {
+  /* 渐变工具类 */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 100%);
+  }
+
+  .bg-gradient-secondary {
+    background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--secondary-glow)) 100%);
+  }
+
+  .bg-gradient-accent {
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--info)) 100%);
+  }
+
+  /* 文本渐变工具类 */
+  .text-gradient-primary {
+    @apply gradient-text;
+  }
+
+  .text-gradient-secondary {
+    @apply gradient-text-secondary;
+  }
+
+  /* 动画工具类 */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

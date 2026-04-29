@@ -1,0 +1,75 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+output
+*.local
+package-lock.json
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Test coverage
+coverage
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.sync
+history/*.json
+.vite_cache
+
+# ─────────────────────────────────────────────────────────────────
+# 交付物排除：以下文件/目录不应出现在 git archive / 平台下载包中
+# ─────────────────────────────────────────────────────────────────
+
+# 导出包（由 pnpm export 生成，不应纳入版本控制）
+export/
+
+# 平台内部运行时文件
+historical_context.txt
+.sync/
+history/
+
+# 性能测试产物
+performance-reports/
+performance.config.json
+scripts/performance/
+scripts/performance-test.sh
+
+# 开发专用配置（不进入交付包）
+vite.config.dev.ts
+docs/PERFORMANCE_TESTING.md
+docs/PERFORMANCE_IMPLEMENTATION_REPORT.md
+docs/PERFORMANCE_SYSTEM_SUMMARY.md
+
+# 内部状态跟踪文档（在 git 中保留以供团队参考，但不复制进交付包）
+# PROJECT_STATUS_SINGLE_SOURCE.md — 项目状态单一来源
+# KNOWN_ISSUES.md — 已知问题清单
+# RELEASE_GATE_VERIFICATION.md — 发布门禁验证报告
+# SMOKE_TEST_FIX_REPORT.md — 历史修复报告（已归档，可删除）
+SMOKE_TEST_FIX_REPORT.md
+# TEST_RESULTS.md — 历史测试结果（已归档，可删除）
+TEST_RESULTS.md
+# UAT_TEST_SCRIPT.md — 历史 UAT 脚本（已归档，可删除）
+UAT_TEST_SCRIPT.md
+
+# 构建产物（已在上方 dist 中排除）
+*.tsbuildinfo

@@ -1,0 +1,53 @@
+# =============================================================
+* text=auto eol=lf
+# .gitattributes — git archive 交付物排除规则
+#
+# 标注 export-ignore 的路径在执行 git archive / 平台下载时
+# 会被自动剔除，不会出现在任何交付 zip 中。
+# 此文件是防止开发工作区污染进入交付包的第一道防线。
+# =============================================================
+
+# ── 平台运行时 & 同步回调 ────────────────────────────────────
+.sync/              export-ignore
+.sync/**            export-ignore
+history/            export-ignore
+history/**          export-ignore
+historical_context.txt export-ignore
+
+# ── 开发 & 运维内部脚本 ──────────────────────────────────────
+scripts/performance/            export-ignore
+scripts/performance/**          export-ignore
+scripts/performance-test.sh     export-ignore
+scripts/verify-release.sh       export-ignore
+scripts/pre-release-check.sh    export-ignore
+
+# ── 内部质量文档（在 git 保留供团队参考，不进入交付包）────────
+KNOWN_ISSUES.md                 export-ignore
+RELEASE_GATE_VERIFICATION.md    export-ignore
+MVP_ACCEPTANCE_EVIDENCE.md      export-ignore
+PROJECT_STATUS_SINGLE_SOURCE.md export-ignore
+
+# ── 历史归档目录 ─────────────────────────────────────────────
+docs/archive/                   export-ignore
+docs/archive/**                 export-ignore
+
+# ── 测试代码（内部研发，不进入客户交付包）───────────────────
+src/__tests__/                  export-ignore
+src/__tests__/**                export-ignore
+
+# ── 构建 & 性能产物 ──────────────────────────────────────────
+dist/                           export-ignore
+dist/**                         export-ignore
+performance-reports/            export-ignore
+performance-reports/**          export-ignore
+performance.config.json         export-ignore
+
+# ── 环境密钥（非示例）───────────────────────────────────────
+.env                            export-ignore
+.env.local                      export-ignore
+.env.production                 export-ignore
+
+# ── 编辑器 & 系统产物 ────────────────────────────────────────
+.DS_Store                       export-ignore
+.vscode/                        export-ignore
+.vscode/**                      export-ignore
