@@ -355,6 +355,7 @@
     "anomalyType": "異常タイプ",
     "anomalyDescription": "異常説明",
     "assembly": "組立",
+    "firmware": "ファームウェア書込",
     "inspection": "検査",
     "packaging": "梱包",
     "testing": "テスト",
@@ -1321,6 +1322,7 @@
     "errorCheckRelease": "リリース条件のチェックに失敗しました"
   },
   "productionOrder": {
+    "subtitle": "生産注文と工程進捗を管理",
     "createTitle": "生産オーダー作成",
     "createDescription": "生産オーダー情報を入力",
     "selectPlan": "生産計画を選択",

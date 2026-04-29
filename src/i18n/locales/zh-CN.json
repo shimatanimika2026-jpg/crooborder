@@ -372,6 +372,7 @@
     "anomalyType": "异常类型",
     "anomalyDescription": "异常描述",
     "assembly": "组装",
+    "firmware": "软件写入",
     "inspection": "检验",
     "packaging": "包装",
     "testing": "测试",
@@ -1344,6 +1345,7 @@
     "errorCheckRelease": "检查放行条件失败"
   },
   "productionOrder": {
+    "subtitle": "管理生产订单和工序进度",
     "createTitle": "创建生产订单",
     "createDescription": "填写生产订单信息",
     "selectPlan": "选择生产计划",
