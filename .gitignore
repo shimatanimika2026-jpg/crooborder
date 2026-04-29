@@ -7,10 +7,14 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies and build artifacts
 node_modules
 dist
+.dist
 dist-ssr
 output
+nul
+*.tsbuildinfo
 *.local
 package-lock.json
 
@@ -36,40 +40,33 @@ coverage
 history/*.json
 .vite_cache
 
-# ─────────────────────────────────────────────────────────────────
-# 交付物排除：以下文件/目录不应出现在 git archive / 平台下载包中
-# ─────────────────────────────────────────────────────────────────
-
-# 导出包（由 pnpm export 生成，不应纳入版本控制）
+# Delivery package exclusions
 export/
 
-# 平台内部运行时文件
+# Platform runtime files
 historical_context.txt
 .sync/
 history/
 
-# 性能测试产物
+# Performance test artifacts
 performance-reports/
 performance.config.json
 scripts/performance/
 scripts/performance-test.sh
 
-# 开发专用配置（不进入交付包）
+# Development-only config and archived reports
 vite.config.dev.ts
 docs/PERFORMANCE_TESTING.md
 docs/PERFORMANCE_IMPLEMENTATION_REPORT.md
 docs/PERFORMANCE_SYSTEM_SUMMARY.md
+docs/archive/SMOKE_TEST_FIX_REPORT.md
+docs/archive/TEST_RESULTS.md
+docs/archive/UAT_TEST_SCRIPT.md
 
-# 内部状态跟踪文档（在 git 中保留以供团队参考，但不复制进交付包）
-# PROJECT_STATUS_SINGLE_SOURCE.md — 项目状态单一来源
-# KNOWN_ISSUES.md — 已知问题清单
-# RELEASE_GATE_VERIFICATION.md — 发布门禁验证报告
-# SMOKE_TEST_FIX_REPORT.md — 历史修复报告（已归档，可删除）
-SMOKE_TEST_FIX_REPORT.md
-# TEST_RESULTS.md — 历史测试结果（已归档，可删除）
-TEST_RESULTS.md
-# UAT_TEST_SCRIPT.md — 历史 UAT 脚本（已归档，可删除）
-UAT_TEST_SCRIPT.md
-
-# 构建产物（已在上方 dist 中排除）
-*.tsbuildinfo
+# Internal status documents kept in git, but excluded from delivery packages
+# PROJECT_STATUS_SINGLE_SOURCE.md - project status single source
+# KNOWN_ISSUES.md - known issue list
+# RELEASE_GATE_VERIFICATION.md - release gate verification report
+# SMOKE_TEST_FIX_REPORT.md - archived fix report
+# TEST_RESULTS.md - archived test result report
+# UAT_TEST_SCRIPT.md - archived UAT script

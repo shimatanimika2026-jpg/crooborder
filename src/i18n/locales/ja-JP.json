@@ -355,6 +355,7 @@
     "anomalyType": "異常タイプ",
     "anomalyDescription": "異常説明",
     "assembly": "組立",
+    "firmware": "ファームウェア書込",
     "inspection": "検査",
     "packaging": "梱包",
     "testing": "テスト",
@@ -409,7 +410,9 @@
     "immediate": "即時実行",
     "scheduled": "スケジュール実行",
     "robotFirmware": "ロボットファームウェア",
+    "robot_firmware": "ロボットファームウェア",
     "appVersion": "Appバージョン",
+    "app": "Appバージョン",
     "controller": "コントローラー",
     "stable": "安定版",
     "beta": "テスト版",
@@ -1321,6 +1324,7 @@
     "errorCheckRelease": "リリース条件のチェックに失敗しました"
   },
   "productionOrder": {
+    "subtitle": "生産注文と工程進捗を管理",
     "createTitle": "生産オーダー作成",
     "createDescription": "生産オーダー情報を入力",
     "selectPlan": "生産計画を選択",
@@ -1356,12 +1360,6 @@
   },
   "firmware": {
     "errorLoad": "ファームウェアバージョンの読み込みに失敗しました"
-  },
-  "asn": {
-    "successUpdateStatus": "ステータスが正常に更新されました",
-    "errorUpdateStatus": "ステータスの更新に失敗しました",
-    "warningDuplicateReceiving": "このASNには既に有効な入荷記録が存在するため、重複して作成できません",
-    "errorNoItems": "このASNには明細データがないため、入荷記録を作成できません"
   },
   "service": {
     "shipping": {

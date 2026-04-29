@@ -4,7 +4,6 @@ import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import { vi } from 'vitest';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { PermissionsProvider } from '@/contexts/PermissionsContext';
-import { NotificationProvider } from '@/contexts/NotificationContext';
 import { AppRoutes } from '@/AppRoutes';
 import { Toaster } from 'sonner';
 
@@ -41,10 +40,25 @@ vi.mock('@/contexts/AuthContext', async () => {
         updated_at: new Date().toISOString(),
       },
       loading: false,
-      signIn: vi.fn(),
-      signUp: vi.fn(),
+      signInWithUsername: vi.fn(async (username: string, password: string) => {
+        const { supabase } = await import('@/db/supabase');
+        const { error } = await supabase.auth.signInWithPassword({
+          email: `${username}@miaoda.com`,
+          password,
+        });
+        return { error };
+      }),
+      signUpWithUsername: vi.fn(async (username: string, password: string) => {
+        const { supabase } = await import('@/db/supabase');
+        const { error } = await supabase.auth.signUp({
+          email: `${username}@miaoda.com`,
+          password,
+        });
+        return { error };
+      }),
       signOut: vi.fn(),
-      updateProfile: vi.fn(),
+      refreshProfile: vi.fn(),
+      signInAsDemo: vi.fn(),
     }),
   };
 });
@@ -62,10 +76,8 @@ const AllTheProviders = ({ children }: AllTheProvidersProps) => {
     <BrowserRouter>
       <AuthProvider>
         <PermissionsProvider>
-          <NotificationProvider>
-            {children}
-            <Toaster />
-          </NotificationProvider>
+          {children}
+          <Toaster />
         </PermissionsProvider>
       </AuthProvider>
     </BrowserRouter>
@@ -109,9 +121,7 @@ export const renderWithRouting = (
     <MemoryRouter initialEntries={[initialPath]}>
       <AuthProvider>
         <PermissionsProvider>
-          <NotificationProvider>
-            <AppRoutes />
-          </NotificationProvider>
+          <AppRoutes />
         </PermissionsProvider>
       </AuthProvider>
     </MemoryRouter>

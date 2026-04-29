@@ -10,7 +10,8 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { supabase } from '@/db/supabase';
+import { supabase, runtimeMode } from '@/db/supabase';
+import { demoSuppliers } from '@/data/demo/operations';
 import type { Supplier } from '@/types/database';
 
 export default function SupplierListPage() {
@@ -29,6 +30,11 @@ export default function SupplierListPage() {
   const fetchSuppliers = async () => {
     try {
       setLoading(true);
+      if (runtimeMode === 'demo') {
+        setSuppliers(demoSuppliers);
+        return;
+      }
+
       const { data, error } = await supabase
         .from('suppliers')
         .select('*')
