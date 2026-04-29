@@ -3,7 +3,8 @@
  * 提供发货订单创建、确认发货、状态查询等功能
  */
 
-import { supabase } from '@/db/supabase';
+import { runtimeMode, supabase } from '@/db/supabase';
+import { demoShippingOrders } from '@/data/demo/operations';
 import type { ShippingOrder, ShippingOrderItem } from '@/types/database';
 
 /**
@@ -79,6 +80,14 @@ export async function getShippingOrders(
   tenantId: string,
   status?: string
 ): Promise<ShippingOrder[]> {
+  if (runtimeMode === 'demo') {
+    return demoShippingOrders.filter((order) => {
+      const matchesTenant = order.tenant_id === tenantId;
+      const matchesStatus = !status || status === 'all' || order.status === status;
+      return matchesTenant && matchesStatus;
+    });
+  }
+
   let query = supabase
     .from('shipping_orders')
     .select('*')

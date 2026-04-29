@@ -9,3 +9,4 @@ export * from './exceptions';
 export * from './inbound';
 export * from './mainflow';
 export * from './assembly';
+export * from './operations';

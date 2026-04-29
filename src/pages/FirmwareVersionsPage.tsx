@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { supabase } from '@/db/supabase';
+import { supabase, runtimeMode } from '@/db/supabase';
+import { demoFirmwareVersions } from '@/data/demo/operations';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -43,6 +44,11 @@ export default function FirmwareVersionsPage() {
   const loadVersions = async () => {
     setLoading(true);
     try {
+      if (runtimeMode === 'demo') {
+        setVersions(demoFirmwareVersions);
+        return;
+      }
+
       const { data, error } = await supabase
         .from('firmware_versions')
         .select('*')
