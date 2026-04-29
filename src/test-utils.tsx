@@ -4,7 +4,6 @@ import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import { vi } from 'vitest';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { PermissionsProvider } from '@/contexts/PermissionsContext';
-import { NotificationProvider } from '@/contexts/NotificationContext';
 import { AppRoutes } from '@/AppRoutes';
 import { Toaster } from 'sonner';
 
@@ -62,10 +61,8 @@ const AllTheProviders = ({ children }: AllTheProvidersProps) => {
     <BrowserRouter>
       <AuthProvider>
         <PermissionsProvider>
-          <NotificationProvider>
-            {children}
-            <Toaster />
-          </NotificationProvider>
+          {children}
+          <Toaster />
         </PermissionsProvider>
       </AuthProvider>
     </BrowserRouter>
@@ -109,9 +106,7 @@ export const renderWithRouting = (
     <MemoryRouter initialEntries={[initialPath]}>
       <AuthProvider>
         <PermissionsProvider>
-          <NotificationProvider>
-            <AppRoutes />
-          </NotificationProvider>
+          <AppRoutes />
         </PermissionsProvider>
       </AuthProvider>
     </MemoryRouter>
