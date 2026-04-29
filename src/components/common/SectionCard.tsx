@@ -35,7 +35,9 @@ export function SectionCard({
           {action && <div>{action}</div>}
         </CardHeader>
       )}
-      <CardContent className={noPadding ? 'p-0' : undefined}>{children}</CardContent>
+      <CardContent className={noPadding ? 'p-0' : !(title || description || action) ? 'p-6' : undefined}>
+        {children}
+      </CardContent>
     </Card>
   );
 }

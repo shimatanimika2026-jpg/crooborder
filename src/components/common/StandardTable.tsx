@@ -58,7 +58,7 @@ export function StandardTable<T extends Record<string, unknown>>({
 
   if (data.length === 0) {
     return (
-      <div className="flex items-center justify-center py-12 border-2 border-slate-400 rounded-md bg-slate-100">
+      <div className="mx-auto flex w-full items-center justify-center rounded-md border-2 border-slate-400 bg-slate-100 py-12">
         <p className={cn(designTokens.typography.caption, 'text-slate-700 font-medium')}>
           {emptyText}
         </p>
