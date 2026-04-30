@@ -13,6 +13,7 @@
     "test:mvp": "vitest run src/__tests__/mvp",
     "test:smoke": "vitest run src/__tests__/smoke",
     "test:e2e": "vitest run src/__tests__/e2e",
+    "test:prod": "playwright test tests/production-smoke.spec.ts",
     "test:pre-release": "pnpm test:smoke && pnpm test:e2e",
     "test:performance": "node scripts/run-bash.cjs scripts/performance-test.sh",
     "export": "node scripts/run-bash.cjs scripts/export-clean-package.sh",
@@ -93,6 +94,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.5",
+    "@playwright/test": "^1.59.1",
     "@tailwindcss/container-queries": "^0.1.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
