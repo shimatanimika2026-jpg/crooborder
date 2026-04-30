@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const BASE_URL = process.env.PLAYWRIGHT_BASE_URL ?? 'https://crooborder.vercel.app';
+const BASE_URL = process.env.PLAYWRIGHT_BASE_URL ?? 'https://crossboder.vercel.app';
 
 const badTextPatterns = [
   'Invalid Date',

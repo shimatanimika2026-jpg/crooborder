@@ -1,11 +1,11 @@
-# Crooborder
+# Crossboder
 
 中国协作机器人日本委托组立业务 Web 管理系统。
 
 当前交付状态：MVP 演示版已完成本地验收，并已部署到 Vercel。
 
-- 线上地址：https://crooborder.vercel.app
-- GitHub 仓库：https://github.com/shimatanimika2026-jpg/crooborder
+- 线上地址：https://crossboder.vercel.app
+- GitHub 仓库：https://github.com/shimatanimika2026-jpg/crossboder
 - 默认分支：`main`
 - 部署平台：Vercel
 

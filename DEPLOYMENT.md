@@ -4,8 +4,8 @@
 
 ## 当前生产地址
 
-- 生产站点：https://crooborder.vercel.app
-- GitHub 仓库：https://github.com/shimatanimika2026-jpg/crooborder
+- 生产站点：https://crossboder.vercel.app
+- GitHub 仓库：https://github.com/shimatanimika2026-jpg/crossboder
 - 生产分支：`main`
 
 ## Vercel 项目设置
@@ -66,9 +66,9 @@ Vercel 需要把所有前端路由重写到根入口。
 验证子路由：
 
 ```bash
-Invoke-WebRequest https://crooborder.vercel.app/login
-Invoke-WebRequest https://crooborder.vercel.app/production-plans
-Invoke-WebRequest https://crooborder.vercel.app/logistics-dashboard
+Invoke-WebRequest https://crossboder.vercel.app/login
+Invoke-WebRequest https://crossboder.vercel.app/production-plans
+Invoke-WebRequest https://crossboder.vercel.app/logistics-dashboard
 ```
 
 预期结果：HTTP 状态码为 200。

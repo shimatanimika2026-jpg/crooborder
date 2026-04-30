@@ -17,8 +17,8 @@
 
 ## 生产地址
 
-- Vercel：https://crooborder.vercel.app
-- GitHub：https://github.com/shimatanimika2026-jpg/crooborder
+- Vercel：https://crossboder.vercel.app
+- GitHub：https://github.com/shimatanimika2026-jpg/crossboder
 - 生产分支：`main`
 
 ## 已验收范围
