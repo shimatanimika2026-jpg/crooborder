@@ -25,6 +25,8 @@ package-lock.json
 
 # Test coverage
 coverage
+test-results/
+playwright-report/
 
 # Editor directories and files
 .vscode/*
