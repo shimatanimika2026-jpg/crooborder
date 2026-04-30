@@ -19,14 +19,18 @@ function getProcessEnv(): Record<string, string | undefined> | undefined {
   }).process?.env;
 }
 
-function getEnvValue(key: string): string {
+function getEnvValue(key: 'VITE_SUPABASE_URL' | 'VITE_SUPABASE_ANON_KEY'): string {
   const processEnv = getProcessEnv();
-  if (processEnv) {
+  if (processEnv?.[key]) {
     return processEnv[key] || '';
   }
 
-  if (typeof import.meta !== 'undefined' && import.meta.env) {
-    return (import.meta.env[key] as string) || '';
+  if (key === 'VITE_SUPABASE_URL') {
+    return import.meta.env.VITE_SUPABASE_URL || '';
+  }
+
+  if (key === 'VITE_SUPABASE_ANON_KEY') {
+    return import.meta.env.VITE_SUPABASE_ANON_KEY || '';
   }
 
   return '';

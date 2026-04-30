@@ -22,8 +22,16 @@ function maskValue(v: string | undefined): string {
 }
 
 /** 从 import.meta.env 读取构建时注入的值 */
-function readEnvVar(key: string): string {
-  return (import.meta.env[key] as string) || '';
+function readEnvVar(key: 'VITE_SUPABASE_URL' | 'VITE_SUPABASE_ANON_KEY'): string {
+  if (key === 'VITE_SUPABASE_URL') {
+    return import.meta.env.VITE_SUPABASE_URL || '';
+  }
+
+  if (key === 'VITE_SUPABASE_ANON_KEY') {
+    return import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+  }
+
+  return '';
 }
 
 // ─── 状态图标 ─────────────────────────────────────────────────
