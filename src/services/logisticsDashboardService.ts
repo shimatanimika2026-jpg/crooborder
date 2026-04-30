@@ -1,15 +1,10 @@
-/**
- * 物流看板服务
- * 提供物流看板统计数据查询功能
- */
-
-import { runtimeMode, supabase } from '@/db/supabase';
 import { demoShippingOrders } from '@/data/demo/operations';
+import { runtimeMode, supabase } from '@/db/supabase';
 import type {
-  LogisticsDashboardStats,
   CarrierPerformanceStat,
-  LogisticsTimeoutOrder,
+  LogisticsDashboardStats,
   LogisticsExceptionOrder,
+  LogisticsTimeoutOrder,
 } from '@/types/database';
 
 const getDemoOrders = (tenantId: string, carrier?: string) =>
@@ -19,9 +14,19 @@ const getDemoOrders = (tenantId: string, carrier?: string) =>
     return matchesTenant && matchesCarrier;
   });
 
-/**
- * 获取物流看板统计数据
- */
+const emptyLogisticsDashboardStats: LogisticsDashboardStats = {
+  total_orders: 0,
+  in_transit_count: 0,
+  arrived_count: 0,
+  exception_count: 0,
+  timeout_count: 0,
+  avg_transit_days: 0,
+  avg_transport_hours: 0,
+  avg_customs_hours: 0,
+  on_time_rate: 0,
+  status_distribution: [],
+};
+
 export async function getLogisticsDashboardStats(
   tenantId: string,
   carrier?: string,
@@ -57,16 +62,13 @@ export async function getLogisticsDashboardStats(
   });
 
   if (error) {
-    console.error('获取物流看板统计数据失败:', error);
-    throw new Error(`获取物流看板统计数据失败: ${error.message}`);
+    console.error('Fetch logistics dashboard stats failed:', error);
+    return emptyLogisticsDashboardStats;
   }
 
-  return data;
+  return data ?? emptyLogisticsDashboardStats;
 }
 
-/**
- * 获取承运商绩效统计
- */
 export async function getCarrierPerformanceStats(
   tenantId: string,
   startDate?: string,
@@ -95,16 +97,13 @@ export async function getCarrierPerformanceStats(
   });
 
   if (error) {
-    console.error('获取承运商绩效统计失败:', error);
-    throw new Error(`获取承运商绩效统计失败: ${error.message}`);
+    console.error('Fetch carrier performance stats failed:', error);
+    return [];
   }
 
   return Array.isArray(data) ? data : [];
 }
 
-/**
- * 获取超时订单列表
- */
 export async function getTimeoutOrders(
   tenantId: string,
   carrier?: string,
@@ -121,16 +120,13 @@ export async function getTimeoutOrders(
   });
 
   if (error) {
-    console.error('获取超时订单列表失败:', error);
-    throw new Error(`获取超时订单列表失败: ${error.message}`);
+    console.error('Fetch timeout orders failed:', error);
+    return [];
   }
 
   return Array.isArray(data) ? data : [];
 }
 
-/**
- * 获取异常订单列表
- */
 export async function getExceptionOrders(
   tenantId: string,
   carrier?: string,
@@ -159,16 +155,13 @@ export async function getExceptionOrders(
   });
 
   if (error) {
-    console.error('获取异常订单列表失败:', error);
-    throw new Error(`获取异常订单列表失败: ${error.message}`);
+    console.error('Fetch exception orders failed:', error);
+    return [];
   }
 
   return Array.isArray(data) ? data : [];
 }
 
-/**
- * 获取所有承运商列表
- */
 export async function getAllCarriers(tenantId: string): Promise<string[]> {
   if (runtimeMode === 'demo') {
     return Array.from(new Set(getDemoOrders(tenantId).map((order) => order.carrier).filter(Boolean))) as string[];
@@ -181,8 +174,8 @@ export async function getAllCarriers(tenantId: string): Promise<string[]> {
     .not('carrier', 'is', null);
 
   if (error) {
-    console.error('获取承运商列表失败:', error);
-    throw new Error(`获取承运商列表失败: ${error.message}`);
+    console.error('Fetch carriers failed:', error);
+    return [];
   }
 
   const carriers = Array.from(new Set(data?.map((item: { carrier: string }) => item.carrier).filter(Boolean)));

@@ -51,6 +51,13 @@ interface CollaborationStats {
   };
 }
 
+const emptyCollaborationStats: CollaborationStats = {
+  cn_production: { active_plans: 0, completion_rate: 0, pending_materials: 0 },
+  jp_assembly: { in_progress: 0, aging_units: 0, pending_test: 0, pending_qa: 0, pending_shipment: 0 },
+  cross_region_exceptions: { open_count: 0, high_critical_count: 0, overdue_count: 0 },
+  logistics: { in_transit: 0, pending_receiving: 0, pending_inspection: 0 },
+};
+
 export default function ChinaCollaborationViewPage() {
   const { t, i18n } = useTranslation();
   const { user, profile } = useAuth();
@@ -120,7 +127,7 @@ export default function ChinaCollaborationViewPage() {
       setStats(collaborationStats);
     } catch (error) {
       console.error('获取协同视图数据失败:', error);
-      toast.error(t('common.fetchError'));
+      setStats(emptyCollaborationStats);
     } finally {
       setLoading(false);
     }

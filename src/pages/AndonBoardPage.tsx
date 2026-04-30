@@ -53,7 +53,7 @@ export default function AndonBoardPage() {
       setStations(data || []);
     } catch (error) {
       console.error('加载工位失败:', error);
-      toast.error(t('common.error'));
+      setStations([]);
     } finally {
       setLoading(false);
     }

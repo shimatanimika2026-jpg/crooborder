@@ -10,7 +10,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { Eye, Search, AlertTriangle } from 'lucide-react';
-import { toast } from 'sonner';
 
 interface LogisticsWithASN {
   shipment_id: number;
@@ -67,7 +66,7 @@ export default function LogisticsPage() {
       setLogistics(data || []);
     } catch (error) {
       console.error('加载物流信息失败:', error);
-      toast.error('加载物流信息失败');
+      setLogistics([]);
     } finally {
       setLoading(false);
     }

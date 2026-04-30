@@ -10,7 +10,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Package, CheckCircle, AlertCircle, Plus } from 'lucide-react';
-import { toast } from 'sonner';
 
 interface FirmwareVersion {
   id: number;
@@ -58,7 +57,7 @@ export default function FirmwareVersionsPage() {
       setVersions(data || []);
     } catch (error) {
       console.error(t('firmware.errorLoad'), error);
-      toast.error(t('common.error'));
+      setVersions([]);
     } finally {
       setLoading(false);
     }

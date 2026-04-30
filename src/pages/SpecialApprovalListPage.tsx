@@ -1,7 +1,6 @@
 import { AlertCircle, FileText, Plus, Search } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'sonner';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -58,7 +57,7 @@ export default function SpecialApprovalListPage() {
       setRequests(data || []);
     } catch (error: unknown) {
       console.error('Fetch special approvals failed:', error);
-      toast.error('Fetch special approvals failed.');
+      setRequests([]);
     } finally {
       setLoading(false);
     }

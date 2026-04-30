@@ -120,7 +120,10 @@ export async function getShipmentConfirmations(tenantId: string, status?: string
   }
 
   const { data, error } = await query;
-  if (error) throw error;
+  if (error) {
+    console.error('Fetch shipment confirmations failed:', error);
+    return [];
+  }
   return (data ?? []) as ShipmentRecord[];
 }
 
@@ -140,6 +143,9 @@ export async function getShipments(tenantId: string, status?: string): Promise<S
   }
 
   const { data, error } = await query;
-  if (error) throw error;
+  if (error) {
+    console.error('Fetch shipments failed:', error);
+    return [];
+  }
   return (data ?? []) as ShipmentRecord[];
 }

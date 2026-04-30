@@ -2,7 +2,6 @@ import { Plus, Search } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -93,7 +92,6 @@ export default function CommissionListPage() {
       setCommissions(data || []);
     } catch (error: unknown) {
       console.error('Error fetching commissions:', error);
-      toast.error(t('commission.fetchError'));
       setCommissions([]);
     } finally {
       setLoading(false);
