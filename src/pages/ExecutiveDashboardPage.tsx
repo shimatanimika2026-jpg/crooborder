@@ -99,13 +99,16 @@ export default function ExecutiveDashboardPage() {
       const { data: summary, error: summaryError } = await supabase
         .rpc('get_executive_dashboard_summary');
 
-      if (summaryError) throw summaryError;
+      const executiveSummary = summaryError ? null : summary;
+      if (summaryError) {
+        console.warn('Executive dashboard summary RPC unavailable:', summaryError);
+      }
 
       // 获取关键阻塞点和升级事项（跨租户）
       const { data: exceptions, error: exError } = await supabase
         .from('operation_exceptions')
-        .select('id, severity, current_status, created_at, exception_type, remarks')
-        .in('current_status', ['open', 'investigating']);
+        .select('id, severity, status, created_at, exception_type, description')
+        .in('status', ['open', 'in_progress']);
 
       if (exError) throw exError;
 
@@ -113,7 +116,7 @@ export default function ExecutiveDashboardPage() {
       const blockers = exceptions?.filter((e) => e.severity === 'high' || e.severity === 'critical').map((e) => ({
         id: e.id.toString(),
         type: 'exception',
-        description: e.remarks || e.exception_type || t('executive.unknownException'),
+        description: e.description || e.exception_type || t('executive.unknownException'),
         severity: e.severity,
         created_at: e.created_at,
       })) || [];
@@ -127,34 +130,34 @@ export default function ExecutiveDashboardPage() {
       }).map((e) => ({
         id: e.id.toString(),
         title: `${t('executive.overdueException')} #${e.id}`,
-        description: e.remarks || e.exception_type || t('executive.unknownException'),
+        description: e.description || e.exception_type || t('executive.unknownException'),
         priority: e.severity,
         created_at: e.created_at,
       })) || [];
 
       // 组装统计数据
       const executiveStats: ExecutiveDashboardStats = {
-        plan_achievement: summary?.plan_achievement || {
+        plan_achievement: executiveSummary?.plan_achievement || {
           total_plans: 0,
           completed_plans: 0,
           achievement_rate: 0,
         },
-        cn_production: summary?.cn_production || {
+        cn_production: executiveSummary?.cn_production || {
           total_units: 0,
           completed_units: 0,
           completion_rate: 0,
         },
-        jp_operations: summary?.jp_operations || {
+        jp_operations: executiveSummary?.jp_operations || {
           assembly_rate: 0,
           test_rate: 0,
           shipment_rate: 0,
         },
-        exceptions: summary?.exceptions || {
+        exceptions: executiveSummary?.exceptions || {
           open_count: 0,
           high_critical_count: 0,
           overdue_count: 0,
         },
-        logistics: summary?.logistics || {
+        logistics: executiveSummary?.logistics || {
           in_transit: 0,
           pending_receiving: 0,
           pending_inspection: 0,
